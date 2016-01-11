@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Haochi Chen",
   "license": "ISC",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/haochi/angular2-web-worker"
+  },
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
