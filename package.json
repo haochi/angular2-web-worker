@@ -1,10 +1,16 @@
 {
   "name": "angular2-web-worker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "author": "Haochi Chen",
   "license": "ISC",
+  "keywords": [
+      "angular",
+      "angular 2",
+      "web",
+      "worker"
+  ],
   "repository": {
       "type": "git",
       "url": "https://github.com/haochi/angular2-web-worker"
