@@ -2,6 +2,12 @@
 
 [Web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) service for [Angular 2](https://angular.io).
 
+# Install
+
+```shell
+npm i angular2-web-worker
+```
+
 # API
 ```javascript
 export interface IWebWorkerService {
