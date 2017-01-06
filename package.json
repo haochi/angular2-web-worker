@@ -1,34 +1,59 @@
 {
   "name": "angular2-web-worker",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
-  "main": "index.js",
   "author": "Haochi Chen",
   "license": "ISC",
   "keywords": [
-      "angular",
-      "angular 2",
-      "web",
-      "worker"
+    "angular",
+    "angular 2",
+    "web",
+    "worker"
   ],
   "repository": {
-      "type": "git",
-      "url": "https://github.com/haochi/angular2-web-worker"
+    "type": "git",
+    "url": "https://github.com/haochi/angular2-web-worker"
   },
   "scripts": {
+    "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
+    "tsc:w": "tsc -w"
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.1",
-    "systemjs": "0.19.6",
-    "rxjs": "5.0.0-beta.0"
+    "@angular/common": "~2.4.0",
+    "@angular/compiler": "~2.4.0",
+    "@angular/core": "~2.4.0",
+    "@angular/forms": "~2.4.0",
+    "@angular/http": "~2.4.0",
+    "@angular/platform-browser": "~2.4.0",
+    "@angular/platform-browser-dynamic": "~2.4.0",
+    "@angular/router": "~3.4.0",
+
+    "angular-in-memory-web-api": "~0.2.4",
+    "systemjs": "0.19.40",
+    "core-js": "^2.4.1",
+    "rxjs": "5.0.1",
+    "zone.js": "^0.7.4"
   },
   "devDependencies": {
-    "concurrently": "^1.0.0",
-    "lite-server": "^1.3.1",
-    "typescript": "^1.7.3"
+    "concurrently": "^3.1.0",
+    "lite-server": "^2.2.2",
+    "typescript": "~2.0.10",
+
+    "canonical-path": "0.0.2",
+    "http-server": "^0.9.0",
+    "tslint": "^3.15.1",
+    "lodash": "^4.16.4",
+    "jasmine-core": "~2.4.1",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-cli": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "~4.0.14",
+    "rimraf": "^2.5.4",
+
+    "@types/node": "^6.0.46",
+    "@types/jasmine": "^2.5.36"
   }
 }

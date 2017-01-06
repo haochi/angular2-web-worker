@@ -1,25 +1,23 @@
-import {Component, OnInit, enableProdMode} from 'angular2/core';
-import {WebWorkerService} from '../web-worker.service';
-import {Result} from './result';
-
-enableProdMode();
+import { Component, OnInit } from '@angular/core';
+import { WebWorkerService } from '../web-worker.service';
+import { Result } from './result';
 
 @Component({
-    selector: 'web-worker-app',
-    template: `
+  selector: 'my-app',
+  template: `
     <h2>calculating fibonacci using web worker</h2>
     <form (ngSubmit)='startWebWorkerCalculation()'>
         <div>
             <span>calculate fib(n) from</span>
-            <input type='number' [(ngModel)]='webWorkerStart' />
+            <input type='number' [(ngModel)]='webWorkerStart' name='webWorkerStart' />
             <span>to:</span>
-            <input type='number' [(ngModel)]='webWorkerEnd' />
+            <input type='number' [(ngModel)]='webWorkerEnd' name='webWorkerEnd' />
         </div>
         <button type='submit'>Start</button>
         <button type='button' (click)='stopWebWorkerCalculation()'>Stop</button>
     </form>
     <div>
-        <p *ngFor='#result of webWorkerResults'>
+        <p *ngFor='let result of webWorkerResults'>
             fib({{ result.number }}) = 
             <span *ngIf='result.loading' class='spin-me-baby'>... calculating ...</span>
             <span *ngIf='!result.loading'>{{ result.result }}</span> 
@@ -30,19 +28,19 @@ enableProdMode();
     <form (ngSubmit)='startSynchronousCalculation()'>
         <div>
             <span>calculate fib(n) from</span>
-            <input type='number' [(ngModel)]='synchronousStart' />
+            <input type='number' [(ngModel)]='synchronousStart' name='synchronousStart' />
             <span>to:</span>
-            <input type='number' [(ngModel)]='synchronousEnd' />
+            <input type='number' [(ngModel)]='synchronousEnd' name='synchronousEnd' />
         </div>
         <button type='submit'>Start (might lock up your browser for large numbers)</button>
     </form>
     <div>
         <span *ngIf='synchronousDuration' [class.zoom-me-baby]='true'>took {{ synchronousDuration }} seconds</span>
-        <p *ngFor='#result of synchronousResults'>
+        <p *ngFor='let result of synchronousResults'>
             fib({{ result.number }}) = {{ result.result }}
         </p>
     </div>
-    `,
+  `,
     styles: [
         `
         .spin-me-baby {
@@ -142,7 +140,7 @@ export class AppComponent implements OnInit {
     }
     
     private fib(n: number) {
-        const fib = (n: number) => {
+        const fib = (n: number) : number => {
             if (n < 2) return 1;
             return fib(n - 1) + fib(n - 2);
         };

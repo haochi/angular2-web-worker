@@ -1,10 +1,5 @@
 import {IWebWorkerService} from './web-worker.interface';
 
-export interface IWebWorkerService {
-    run<T>(workerFunction: (any) => T, data?: any): Promise<T>;
-    runUrl(url: string, data?: any): Promise<any>;
-    terminate<T>(promise: Promise<T>): Promise<T>;
-} 
 export class WebWorkerService implements IWebWorkerService {
     private workerFunctionToUrlMap = new WeakMap<Function, string>();
     private promiseToWorkerMap = new WeakMap<Promise<any>, Worker>();
