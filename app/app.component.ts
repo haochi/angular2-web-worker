@@ -118,6 +118,13 @@ export class AppComponent implements OnInit {
         promises.push(this._webWorkerService.runUrl('app/echo.js', 'marco'));
         promises.push(this._webWorkerService.run(() => 'polo', 0));
 
+        promises.forEach(promise => {
+            let worker = this._webWorkerService.getWorker(promise);
+            worker.addEventListener('message', event => {
+                console.log('getWorker', event.data);
+            });
+        });
+
         Promise.all(promises)
             .then(response => console.log(response))
             .catch(error => console.error(error));

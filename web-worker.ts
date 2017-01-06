@@ -26,6 +26,10 @@ export class WebWorkerService implements IWebWorkerService {
     terminate<T>(promise: Promise<T>): Promise<T> {
         return this.removePromise(promise);
     }
+
+    getWorker(promise: Promise<any>): Worker {
+        return this.promiseToWorkerMap.get(promise);
+    }
     
     private createPromiseForWorker<T>(worker: Worker, data: any) {
         return new Promise<T>((resolve, reject) => {
