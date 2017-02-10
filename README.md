@@ -63,7 +63,9 @@ export interface IWebWorkerService {
     * `promise`: The `Promise` instance returned by `run` or `runUrl`.
 
 # Example
-See [`app/app.component.ts`](app/app.component.ts) for usage with an Angular 2 application.
+
+Check out [angular2-web-worker-example](https://github.com/haochi/angular2-web-worker-example) for a sample project,
+or see [`app/app.component.ts`](app/app.component.ts) for usage with an Angular 2 application.
 
 ```
 export class AppComponent implements OnInit {
