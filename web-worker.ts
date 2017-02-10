@@ -4,7 +4,7 @@ export class WebWorkerService implements IWebWorkerService {
     private workerFunctionToUrlMap = new WeakMap<Function, string>();
     private promiseToWorkerMap = new WeakMap<Promise<any>, Worker>();
 
-    run<T>(workerFunction: (any) => T, data?: any): Promise<T> {
+    run<T>(workerFunction: (input: any) => T, data?: any): Promise<T> {
         const url = this.getOrCreateWorkerUrl(workerFunction);
         return this.runUrl(url, data);
     }
@@ -59,14 +59,14 @@ export class WebWorkerService implements IWebWorkerService {
         return URL.createObjectURL(blob);
     }
     
-    private createPromiseCleaner<T>(promise) : (T) => T {
+    private createPromiseCleaner<T>(promise: Promise<T>) : (input: any) => T {
         return (event) => {
             this.removePromise(promise);
             return event;  
         };
     }
     
-    private removePromise<T>(promise) : Promise<T> {
+    private removePromise<T>(promise: Promise<T>) : Promise<T> {
         const worker = this.promiseToWorkerMap.get(promise);
         if (worker) {
             worker.terminate();

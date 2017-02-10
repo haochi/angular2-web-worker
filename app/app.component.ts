@@ -67,14 +67,14 @@ import { Result } from './result';
     providers: [WebWorkerService]
 })
 export class AppComponent implements OnInit {
-    public webWorkerResults = [];
+    public webWorkerResults: any[] = [];
     public webWorkerStart = 35;
     public webWorkerEnd = 45;
     public synchronousStart = 35;
     public synchronousEnd = 38;
-    public synchronousResults = [];
+    public synchronousResults: any[] = [];
     public synchronousDuration = 0;
-    private promises = [];
+    private promises: Promise<any>[] = [];
 
     constructor(private _webWorkerService: WebWorkerService) {
     }
@@ -115,7 +115,7 @@ export class AppComponent implements OnInit {
     
     startExternalRequest() {
         const promises = [];
-        promises.push(this._webWorkerService.runUrl('app/echo.js', 'marco'));
+        promises.push(this._webWorkerService.runUrl('dist/app/echo.js', 'marco'));
         promises.push(this._webWorkerService.run(() => 'polo', 0));
 
         promises.forEach(promise => {

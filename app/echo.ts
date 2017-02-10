@@ -1,3 +1,8 @@
+interface DedicatedWorkerGlobalScope extends Window {
+    postMessage(data: string): void;
+}
+
 onmessage = function (e) {
-    postMessage(e.data);
+    const me = this as DedicatedWorkerGlobalScope;
+    me.postMessage(e.data);
 };
