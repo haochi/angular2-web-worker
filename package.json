@@ -20,7 +20,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@angular/common": "~2.4.0",
     "@angular/compiler": "~2.4.0",
     "@angular/core": "~2.4.0",
