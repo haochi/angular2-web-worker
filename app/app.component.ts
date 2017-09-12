@@ -40,6 +40,7 @@ import { Result } from './result';
             fib({{ result.number }}) = {{ result.result }}
         </p>
     </div>
+    <my-transfer-array></my-transfer-array>
   `,
     styles: [
         `
@@ -63,8 +64,7 @@ import { Result } from './result';
             }
         }
         `
-    ],
-    providers: [WebWorkerService]
+    ]
 })
 export class AppComponent implements OnInit {
     public webWorkerResults: any[] = [];
