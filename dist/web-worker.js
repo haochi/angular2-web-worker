@@ -4,13 +4,13 @@ var WebWorkerService = (function () {
         this.workerFunctionToUrlMap = new WeakMap();
         this.promiseToWorkerMap = new WeakMap();
     }
-    WebWorkerService.prototype.run = function (workerFunction, data) {
+    WebWorkerService.prototype.run = function (workerFunction, data, transferList) {
         var url = this.getOrCreateWorkerUrl(workerFunction);
-        return this.runUrl(url, data);
+        return this.runUrl(url, data, transferList);
     };
-    WebWorkerService.prototype.runUrl = function (url, data) {
+    WebWorkerService.prototype.runUrl = function (url, data, transferList) {
         var worker = new Worker(url);
-        var promise = this.createPromiseForWorker(worker, data);
+        var promise = this.createPromiseForWorker(worker, data, transferList);
         var promiseCleaner = this.createPromiseCleaner(promise);
         this.promiseToWorkerMap.set(promise, worker);
         promise
@@ -24,11 +24,11 @@ var WebWorkerService = (function () {
     WebWorkerService.prototype.getWorker = function (promise) {
         return this.promiseToWorkerMap.get(promise);
     };
-    WebWorkerService.prototype.createPromiseForWorker = function (worker, data) {
+    WebWorkerService.prototype.createPromiseForWorker = function (worker, data, transferList) {
         return new Promise(function (resolve, reject) {
             worker.addEventListener('message', function (event) { return resolve(event.data); });
             worker.addEventListener('error', reject);
-            worker.postMessage(data);
+            worker.postMessage(data, transferList);
         });
     };
     WebWorkerService.prototype.getOrCreateWorkerUrl = function (fn) {
@@ -41,7 +41,7 @@ var WebWorkerService = (function () {
     };
     WebWorkerService.prototype.createWorkerUrl = function (resolve) {
         var resolveString = resolve.toString();
-        var webWorkerTemplate = "\n            self.addEventListener('message', function(e) {\n                postMessage((" + resolveString + ")(e.data));\n            });\n        ";
+        var webWorkerTemplate = "\n            self.addEventListener('message', function(e) {\n                const result = (" + resolveString + ")(e.data);\n                if(result.data && result.transferList){\n                    postMessage(result.data, result.transferList)\n                }    \n                postMessage(result);\n            });\n        ";
         var blob = new Blob([webWorkerTemplate], { type: 'text/javascript' });
         return URL.createObjectURL(blob);
     };

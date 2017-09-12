@@ -11,10 +11,12 @@ npm i angular2-web-worker
 # API
 ```javascript
 export interface IWebWorkerService {
-    run<T>(workerFunction: (any) => T, data?: any): Promise<T>;
-    runUrl(url: string, data?: any): Promise<any>;
+    run<T>(workerFunction: (input: any) => T | { data: T, transferList: any[] }, data?: any, transferObject?: any[]): Promise<T>;
+    runUrl(url: string, data: any, transferList: any[]): Promise<T>;
     terminate<T>(promise: Promise<T>): Promise<T>;
+    getWorker(promise: Promise<any>): Worker;
 }
+
 ```
 
 * `run`
@@ -56,6 +58,11 @@ export interface IWebWorkerService {
             }, 10);
             ```
     * `data`: [serializable data](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm)
+    * `transferList`: Optional list to pass ownership of objects between web workers and the main thread. 
+    Mainly usable for transfer of big amount of data e.g. via ArrayBuffer. 
+    @see [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Worker/postMessage) 
+    @see [Transferable](https://developer.mozilla.org/en-US/docs/Web/API/Transferable),
+ 
 * `runUrl`: Basically the same as 
     * `url`:  The url you would use to create a [`Worker`](https://developer.mozilla.org/en-US/docs/Web/API/Worker/Worker) instance
     * `data`: Same as the `run` method
