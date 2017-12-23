@@ -1,12 +1,12 @@
 {
-  "name": "angular2-web-worker",
-  "version": "0.0.5",
+  "name": "angular5-web-worker",
+  "version": "0.0.7",
   "description": "",
   "author": "Haochi Chen",
   "license": "ISC",
   "keywords": [
     "angular",
-    "angular 2",
+    "angular 5",
     "web",
     "worker"
   ],
@@ -21,40 +21,40 @@
     "tsc:w": "tsc -w"
   },
   "peerDependencies": {
-    "@angular/common": "~2.4.0",
-    "@angular/compiler": "~2.4.0",
-    "@angular/core": "~2.4.0",
-    "@angular/forms": "~2.4.0",
-    "@angular/http": "~2.4.0",
-    "@angular/platform-browser": "~2.4.0",
-    "@angular/platform-browser-dynamic": "~2.4.0",
-    "@angular/router": "~3.4.0",
+    "@angular/common": "~5.1.2",
+    "@angular/compiler": "~5.1.2",
+    "@angular/core": "~5.1.2",
+    "@angular/forms": "~5.1.2",
+    "@angular/http": "~5.1.2",
+    "@angular/platform-browser": "~5.1.2",
+    "@angular/platform-browser-dynamic": "~5.1.2",
+    "@angular/router": "~5.1.2",
 
-    "angular-in-memory-web-api": "~0.2.4",
-    "systemjs": "0.19.40",
-    "core-js": "^2.4.1",
-    "rxjs": "5.0.1",
-    "zone.js": "^0.7.4"
+    "angular-in-memory-web-api": "~0.5.3",
+    "systemjs": "0.20.19",
+    "core-js": "^2.5.3",
+    "rxjs": "5.5.6",
+    "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "concurrently": "^3.1.0",
-    "lite-server": "^2.2.2",
-    "typescript": "~2.0.10",
+    "concurrently": "^3.5.1",
+    "lite-server": "^2.3.0",
+    "typescript": "~2.4.2",
 
     "canonical-path": "0.0.2",
-    "http-server": "^0.9.0",
-    "tslint": "^3.15.1",
-    "lodash": "^4.16.4",
-    "jasmine-core": "~2.4.1",
-    "karma": "^1.3.0",
-    "karma-chrome-launcher": "^2.0.0",
+    "http-server": "^0.10.0",
+    "tslint": "~5.7.0",
+    "lodash": "^4.17.4",
+    "jasmine-core": "~2.8.0",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
     "karma-cli": "^1.0.1",
-    "karma-jasmine": "^1.0.2",
+    "karma-jasmine": "^1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~4.0.14",
-    "rimraf": "^2.5.4",
+    "protractor": "~5.2.2",
+    "rimraf": "^2.6.2",
 
-    "@types/node": "^6.0.46",
-    "@types/jasmine": "^2.5.36"
+    "@types/node": "^8.5.2",
+    "@types/jasmine": "^2.8.2"
   }
 }
